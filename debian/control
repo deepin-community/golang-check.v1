@@ -1,0 +1,54 @@
+Source: golang-check.v1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Sergio Schvezov <sergio.schvezov@canonical.com>,
+           Martín Ferrari <tincho@debian.org>,
+           Michael Stapelberg <stapelberg@debian.org>,
+           Anthony Fok <foka@debian.org>
+Section: devel
+Testsuite: autopkgtest-pkg-go
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-golang (>= 1.28),
+               golang-any,
+               golang-github-kr-pretty-dev (>= 0.2.1+git20200831.59b4212)
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-check.v1
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-check.v1.git
+Homepage: http://labix.org/gocheck
+Rules-Requires-Root: no
+XS-Go-Import-Path: gopkg.in/check.v1,
+                   launchpad.net/gocheck,
+                   github.com/go-check/check
+
+Package: golang-gopkg-check.v1-dev
+Architecture: all
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         golang-github-kr-pretty-dev (>= 0.2.1+git20200831.59b4212)
+Provides: golang-check.v1-dev,
+          golang-github-go-check-check-dev
+Description: Rich testing extension for Go's testing package
+ The Go language provides an internal testing library, named testing, which is
+ relatively slim due to the fact that the standard library correctness by
+ itself is verified using it. The check package, on the other hand, expects the
+ standard library from Go to be working correctly, and builds on it to offer a
+ richer testing framework for libraries and applications to use.
+ .
+ Package "gopkg.in/check.v1" includes features such as:
+ .
+    - Helpful error reporting to aid on figuring problems out
+    - Richer test helpers: assertions which interrupt the test immediately,
+      deep multi-type comparisons, string matching, etc
+    - Suite-based grouping of tests
+    - Fixtures: per suite and/or per test set up and tear down
+    - Benchmarks integrated in the suite logic (with fixtures, etc)
+    - Management of temporary directories
+    - Panic-catching logic, with proper error reporting
+    - Proper counting of successes, failures, panics, missed tests, skips, etc
+    - Explicit test skipping
+    - Support for expected failures
+    - Verbosity flag which disables output caching (helpful to debug hanging
+      tests, for instance)
+    - Multi-line string reporting for more comprehensible failures
+    - Inclusion of comments surrounding checks on failure reports
+    - Fully tested (it manages to test itself reliably)

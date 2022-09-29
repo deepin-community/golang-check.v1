@@ -1,0 +1,23 @@
+Description: Revert upstream "Avoid cycle bug by forking kr/pretty"
+ "diff: detect cycles in the values being compared" at
+ https://github.com/kr/pretty/pull/64 has been merged by @kr
+ on 2020-08-10 and is part of 0.2.1+git20200831.59b4212,
+ thus the github.com/niemeyer/pretty fork is no longer necessary
+ and need not be packaged for Debian.
+Author: Anthony Fok <foka@debian.org>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2020-11-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/checkers.go
++++ b/checkers.go
+@@ -6,7 +6,7 @@
+ 	"regexp"
+ 	"strings"
+ 
+-	"github.com/niemeyer/pretty"
++	"github.com/kr/pretty"
+ )
+ 
+ // -----------------------------------------------------------------------

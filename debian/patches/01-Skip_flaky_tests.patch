@@ -1,0 +1,43 @@
+Description: Skip_flaky_tests
+--- a/benchmark_test.go
++++ b/benchmark_test.go
+@@ -16,6 +16,7 @@
+ }
+ 
+ func (s *BenchmarkS) TestBasicTestTiming(c *C) {
++	c.Skip("Skipping time-dependant test.")
+ 	helper := FixtureHelper{sleepOn: "Test1", sleep: 1000000 * time.Nanosecond}
+ 	output := String{}
+ 	runConf := RunConf{Output: &output, Verbose: true}
+@@ -27,6 +28,7 @@
+ }
+ 
+ func (s *BenchmarkS) TestStreamTestTiming(c *C) {
++	c.Skip("Skipping time-dependant test.")
+ 	helper := FixtureHelper{sleepOn: "SetUpSuite", sleep: 1000000 * time.Nanosecond}
+ 	output := String{}
+ 	runConf := RunConf{Output: &output, Stream: true}
+@@ -37,6 +39,7 @@
+ }
+ 
+ func (s *BenchmarkS) TestBenchmark(c *C) {
++	c.Skip("Skipping time-dependant test.")
+ 	helper := FixtureHelper{sleep: 100000}
+ 	output := String{}
+ 	runConf := RunConf{
+@@ -60,6 +63,7 @@
+ }
+ 
+ func (s *BenchmarkS) TestBenchmarkBytes(c *C) {
++	c.Skip("Skipping time-dependant test.")
+ 	helper := FixtureHelper{sleep: 100000}
+ 	output := String{}
+ 	runConf := RunConf{
+@@ -75,6 +79,7 @@
+ }
+ 
+ func (s *BenchmarkS) TestBenchmarkMem(c *C) {
++	c.Skip("Skipping time-dependant test.")
+ 	helper := FixtureHelper{sleep: 100000}
+ 	output := String{}
+ 	runConf := RunConf{
